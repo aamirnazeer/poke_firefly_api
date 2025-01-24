@@ -8,11 +8,10 @@ const errorHandler = (
   _next: NextFunction
 ): void => {
   if (err instanceof CustomError) {
-    const { statusCode, message, details } = err;
+    const { statusCode, message } = err;
     res.status(statusCode).json({
       status: "error",
       message,
-      ...(details && { details }),
     });
   } else {
     console.error(err);

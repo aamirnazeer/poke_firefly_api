@@ -6,6 +6,7 @@ async function main() {
   if (!PORT) throw new Error("PORT not defined");
   if (!DB_FILE_NAME) throw new Error("DB_FILE_NAME not defined");
   if (!POKE_API_URL) throw new Error("POKE_API_URL not defined");
+
   app.listen(PORT);
 }
 

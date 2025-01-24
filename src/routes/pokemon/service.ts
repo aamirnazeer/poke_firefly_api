@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { LIMIT_VALUE, POKE_API_URL, SELF_API_URL } from "../../core/env";
+import { LIMIT_VALUE, POKE_API_URL } from "../../core/env";
 import { CustomError } from "../../utils/CustomError";
 import { getEvolutionChain, filterOutPokemonData } from "./helper";
 
