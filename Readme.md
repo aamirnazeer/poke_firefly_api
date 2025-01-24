@@ -21,7 +21,6 @@ Make sure you have the following installed on your system:
 
 - Node.js (v22+)
 - npm or yarn
--
 
 ### Backend Setup
 
