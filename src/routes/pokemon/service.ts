@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { POKE_API_URL, SELF_API_URL } from "../../core/env";
+import { LIMIT_VALUE, POKE_API_URL, SELF_API_URL } from "../../core/env";
 import { CustomError } from "../../utils/CustomError";
 import { getEvolutionChain, filterOutPokemonData } from "./helper";
 
@@ -61,7 +61,7 @@ export const searchPokemonService = async (name: string) => {
     const { data: pokemonData } = await axios.get(
       `${POKE_API_URL}/pokemon/${name}`
     );
-    if (pokemonData.id <= 150) {
+    if (pokemonData.id <= LIMIT_VALUE) {
       return {
         name: pokemonData.name,
       };

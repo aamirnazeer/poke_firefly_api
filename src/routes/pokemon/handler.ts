@@ -5,6 +5,7 @@ import {
   searchPokemonService,
 } from "./service";
 import { StatusCodes } from "http-status-codes";
+import { LIMIT_VALUE } from "../../core/env";
 
 const router = Router();
 
@@ -12,7 +13,7 @@ router.get("/", async (req, res, next) => {
   const offset = parseInt(req.query.offset as string) || 0;
   const limit = parseInt(req.query.limit as string) || 15;
 
-  const clampedOffset = Math.min(Math.max(0, offset), 135);
+  const clampedOffset = Math.min(Math.max(0, offset), LIMIT_VALUE - limit);
   const clampedLimit = Math.min(Math.max(1, limit), 15);
 
   try {

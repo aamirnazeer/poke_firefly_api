@@ -1,16 +1,20 @@
 {
   "name": "poke_firefly_api",
   "version": "1.0.0",
-  "main": "dist/server.js",
+  "main": "dist/src/server.js",
   "license": "MIT",
   "scripts": {
     "dev": "node --require ts-node/register --watch src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/src/server.js",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate"
   },
   "dependencies": {
+    "@libsql/client": "^0.14.0",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.4",
     "express": "^4.21.2",
     "http-status-codes": "^2.3.0",
     "morgan": "^1.10.0"
@@ -18,7 +22,9 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
+    "drizzle-kit": "^0.30.2",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }
 }
