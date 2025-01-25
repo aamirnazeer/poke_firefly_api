@@ -9,9 +9,8 @@ export const getAllPokemonsService = async (offset: number, limit: number) => {
       `${POKE_API_URL}/pokemon?offset=${offset}&limit=${limit}`
     );
 
-    ["next", "previous"].forEach((key) => {
-      data[key] = !!data[key];
-    });
+    data["next"] = offset + 15 < LIMIT_VALUE ? !!data["next"] : false;
+    data["previous"] = !!data["previous"];
 
     data.results = filterOutPokemonData(data.results);
 
