@@ -5,7 +5,7 @@ import { checkUserMiddleware } from "../middlewares/checkUserMiddleware";
 
 const router = Router();
 
-router.use("/pokemon", pokemonRouter);
+router.use("/pokemon", checkUserMiddleware, pokemonRouter);
 router.use("/favourite", checkUserMiddleware, favouriteHandler);
 
 export { router };

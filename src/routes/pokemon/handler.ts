@@ -1,9 +1,5 @@
 import { Router } from "express";
-import {
-  getAllPokemonsService,
-  getPokemonDetailsService,
-  searchPokemonService,
-} from "./service";
+import { getAllPokemonsService, getPokemonDetailsService, searchPokemonService } from "./service";
 import { StatusCodes } from "http-status-codes";
 import { LIMIT_VALUE } from "../../core/env";
 
@@ -16,8 +12,10 @@ router.get("/", async (req, res, next) => {
   const clampedOffset = Math.min(Math.max(0, offset), LIMIT_VALUE - limit);
   const clampedLimit = Math.min(Math.max(1, limit), 15);
 
+  const { currentUser } = req;
+
   try {
-    const data = await getAllPokemonsService(clampedOffset, clampedLimit);
+    const data = await getAllPokemonsService(clampedOffset, clampedLimit, currentUser);
     res.status(StatusCodes.OK).send({
       status: "success",
       data,
@@ -29,11 +27,12 @@ router.get("/", async (req, res, next) => {
 
 router.get("/search", async (req, res, next) => {
   const name = (req.query.name as string) || "";
+  const { currentUser } = req;
   try {
-    const data = await searchPokemonService(name);
+    const data = await searchPokemonService(name, currentUser);
     res.status(StatusCodes.OK).send({
       status: "success",
-      data,
+      data: [data],
     });
   } catch (err) {
     next(err);

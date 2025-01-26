@@ -1,7 +1,8 @@
-export const filterOutPokemonData = (arr: { name: string; url: string }[]) => {
+export const filterOutPokemonData = (arr: { name: string; url: string }[], favourites: { name: string }[]) => {
   return arr.map((el: any) => {
     return {
       name: el.name,
+      isFavourite: favourites.some((favourite: any) => favourite.name === el.name),
     };
   });
 };
@@ -13,9 +14,7 @@ export const getEvolutionChain = (chain: any) => {
     if (!node) return;
     evolutions.push(node.species.name);
     if (node.evolves_to.length > 0) {
-      node.evolves_to.forEach((evolution: any) =>
-        evolutionRecursive(evolution)
-      );
+      node.evolves_to.forEach((evolution: any) => evolutionRecursive(evolution));
     }
   };
 
