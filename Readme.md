@@ -62,7 +62,7 @@ or
 yarn  dev
 ```
 
-By default, the backend runs at `http://localhost:5000`.
+By default, the backend runs at `http://localhost:4000`.
 
 ## Assumptions
 

@@ -2,10 +2,10 @@ import { StatusCodes } from "http-status-codes";
 import { CustomError } from "../../utils/CustomError";
 import { setFavouritesController, getFavouritesController, checkFavouritesController, getFavouritesCount, deleteFavouriteController } from "./controller";
 
-export const setFavouritesService = async (name: string, uuid: string) => {
+export const setFavouritesService = async (name: string, id: number, uuid: string) => {
   const count = await checkFavouritesController(name, uuid);
   if (count) throw new CustomError(StatusCodes.CONFLICT, "already set as favourite");
-  await setFavouritesController(name, uuid);
+  await setFavouritesController(name, id, uuid);
 };
 
 export const getFavouritesService = async (uuid: string, offset: number, limit: number) => {

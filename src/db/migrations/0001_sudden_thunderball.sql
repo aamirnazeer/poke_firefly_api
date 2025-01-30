@@ -1,0 +1,1 @@
+ALTER TABLE `favourites` ADD `pokemon_id` integer NOT NULL;

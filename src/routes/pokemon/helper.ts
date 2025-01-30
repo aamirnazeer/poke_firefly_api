@@ -2,6 +2,7 @@ export const filterOutPokemonData = (arr: { name: string; url: string }[], favou
   return arr.map((el: any) => {
     return {
       name: el.name,
+      id: parseInt(el.url.split("/")[6]) || 0,
       isFavourite: favourites.some((favourite: any) => favourite.name === el.name),
     };
   });

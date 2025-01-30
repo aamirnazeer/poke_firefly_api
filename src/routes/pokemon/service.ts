@@ -41,10 +41,13 @@ export const getPokemonDetailsService = async (name: string) => {
       return el.type.name;
     });
 
+    const { id } = pokemonData;
+
     return {
       abilities,
       types,
       evolutions,
+      id,
     };
   } catch (err) {
     const error = err as Error | AxiosError;
@@ -65,6 +68,7 @@ export const searchPokemonService = async (name: string, currentUser: string) =>
     if (pokemonData.id <= LIMIT_VALUE) {
       return {
         name: pokemonData.name,
+        id: pokemonData.id,
         isFavourite,
       };
     } else {

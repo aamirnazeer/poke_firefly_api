@@ -5,9 +5,9 @@ import { setFavouritesService, getFavouritesService, deleteFavouriteService } fr
 const router = Router();
 
 router.post("/", async (req, res, next) => {
-  const { name } = req.body;
+  const { name, id } = req.body;
   try {
-    await setFavouritesService(name, req.currentUser);
+    await setFavouritesService(name, id, req.currentUser);
     res.status(StatusCodes.CREATED).send({
       status: "success",
     });
